@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>USCIS – Check Case Status</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #1b1b1b;
+      text-align: center;
+    }
+
+    /* Top USCIS bar */
+    .top-bar {
+      background-color: #005ea2;
+      padding: 14px;
+    }
+
+    .top-bar img {
+      height: 38px;
+    }
+
+    /* Main container */
+    .container {
+      background: #ffffff;
+      max-width: 420px;
+      margin: 30px auto;
+      padding: 30px 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 4px;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #585858;
+      margin-bottom: 8px;
+    }
+
+    p.description {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #005ea2;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    button:hover {
+      background-color: #00457a;
+    }
+
+    .error {
+      color: #b50909;
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Footer (simple, USCIS-style) */
+    footer {
+      margin-top: 40px;
+      padding: 20px 10px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    footer a {
+      color: #005ea2;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- USCIS Header -->
+  <div class="top-bar">
+    <img src="https://myaccount.uscis.gov/static/media/dhs_seal_1R.583c6629.svg" alt="DHS Seal">
+  </div>
+
+  <!-- Main -->
+  <div class="container">
+    <h1>Check Case Status</h1>
+    <p class="description">
+      Enter your USCIS receipt number below to check the current status of your case.
+    </p>
+
+    <input
+      type="text"
+      id="receiptInput"
+    >
+
+    <button onclick="checkReceipt()">Check Status</button>
+
+    <p id="errorMessage" class="error"></p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <strong>USCIS.gov</strong><br>
+      An official website of the U.S. Department of Homeland Security
+    </p>
+    <p>
+      <a href="#">Privacy Policy</a> ·
+      <a href="#">Terms of Use</a> ·
+      <a href="#">Contact USCIS</a>
+    </p>
+  </footer>
+
+  <!-- Logic -->
+  <script>
+    function checkReceipt() {
+      const code = document
+        .getElementById("receiptInput")
+        .value
+        .trim()
+        .toUpperCase();
+
+      const error = document.getElementById("errorMessage");
+      error.innerText = "";
+
+      // 🔹 Ejemplos de recibos válidos
+      if (code === "478956634") {
+        window.location.href = "status.html";
+      }
+      else if (code === "MSC2190456789") {
+        window.location.href = "status2.html";
+      }
+      else if (code === "LIN2390012345") {
+        window.location.href = "status3.html";
+      }
+
+      // 🔹 Copia este bloque para agregar más
+      /*
+      else if (code === "TU-RECIBO-AQUI") {
+        window.location.href = "tuarchivo.html";
+      }
+      */
+
+      else {
+        error.innerText = "Receipt number not recognized. Please check and try again.";
+      }
+    }
+  </script>
+
+</body>
+</html>
